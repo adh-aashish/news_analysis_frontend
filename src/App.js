@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from "./components/Footer/footer";
+import InputForm from "./components/InputForm/inputform";
+import Navbar from "./components/Navbar/navbar";
+import ParticleBackground from "./components/Particles/particles";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="heading">
+        <Navbar />
       </header>
-    </div>
+      <section className="main">
+        <InputForm />
+      </section>
+      <footer className="footer"> 
+        <Footer />
+      </footer>
+      <ParticleBackground />
+      {/* <ParticleBackground />*/}
+   </div>
   );
 }
 
-export default App;
+export default App

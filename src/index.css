@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root, .App, .main, body, html {
+  height: 100%;
+}
+
+a, body {
+  color: #f1f1f1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+  padding: 0;
+  position: relative;
+}
+
+.heading {
+  background: #111;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  z-index: 17;
+  width: 100%;
+}
+
+.footer {
+  width : 100%;
+}
+
+
+/* .input-form-container { */
+/*   max-width: 800px; */
+/*   position: absolute; */
+/*   top: 50%; */
+/*   left: 50%; */
+/*   transform: translate(-50%, -50%); */
+/*   margin: 0 auto; */
+/* } */

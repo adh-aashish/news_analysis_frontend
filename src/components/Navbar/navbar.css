@@ -1,0 +1,31 @@
+.nav_container {
+  margin: 0 auto;
+  max-width: 1750px;
+  padding: 0 15px;
+  position: relative;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  font-family: Roboto,Arial,sans-serif;
+  font-size: 14px;
+}
+
+.logo_text {
+  font-size: 30px;
+  line-height: 45px;
+  padding: 0 11px;
+}
+
+.logo a span {
+  color: red;
+}
+
