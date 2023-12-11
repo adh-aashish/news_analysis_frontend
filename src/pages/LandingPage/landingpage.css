@@ -1,0 +1,44 @@
+.heading {
+  background: #111;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  z-index: 17;
+  width: 100%;
+}
+
+.nav_container {
+  margin: 0 auto;
+  max-width: 1750px;
+  padding: 0 15px;
+  position: relative;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+  padding: 0;
+  position: relative;
+}
+
+.search {
+  max-width: 800px;
+  opacity: .9;
+  width: 80%;
+  z-index: 3;
+}
+
+.footer {
+  width : 100%;
+}

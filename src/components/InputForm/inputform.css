@@ -2,12 +2,6 @@ input {
   color: white;
 }
 
-.search {
-  max-width: 800px;
-  opacity: .9;
-  width: 80%;
-  z-index: 3;
-}
 
 .input-form {
   width: 100%;

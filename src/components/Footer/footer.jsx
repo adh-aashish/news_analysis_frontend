@@ -15,8 +15,6 @@ const Footer = () => {
           <span> News Analysis </span>
         </div>
       </div>
-       
-
     </div>
   )
 }
