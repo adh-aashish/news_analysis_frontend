@@ -1,5 +1,35 @@
-/* .heading { */
-/*   display: flex; */
-/*   justify-items: center; */
-/*   justify-content: space-between; */
-/* } */
+.ResultPage .main_result {
+  margin-top: 60px;
+}
+.ResultPage .heading_items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  margin: 0 20px;
+}
+
+.ResultPage .input-form {
+  max-width: 500px;
+  height: 44px;
+}
+
+.setting_logo{
+  font-size: 30px;
+  padding: 0 11px;
+}
+
+.ResultPage {
+  height: 100%;
+  background-color: #242424;
+}
+
+.news_container {
+  height: 350px;
+}
+
+.vis-container {
+  height: 200px;
+  width: 100%;
+  background: aqua;
+}

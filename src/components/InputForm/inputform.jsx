@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 import "./inputform.css"
 
 const InputForm = () => {
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-
+    navigate("/result")
   }
 
   return (

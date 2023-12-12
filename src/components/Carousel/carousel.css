@@ -1,0 +1,153 @@
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-items {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 500px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin-left: 20px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 100%;
+}
+
+.carousel-control.prev {
+  left: 0;
+}
+
+.carousel-control.next {
+  right: 0;
+}
+
+.carousel-pagination {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.pagination-indicator {
+  width: 1rem;
+  height: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination-indicator.active {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.carousel-wrapper.fade .carousel-items {
+  position: relative;
+}
+
+.carousel-wrapper.fade .carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-wrapper.fade .carousel-item.active {
+  position: relative;
+  opacity: 1;
+}
+
+.news-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+  background: green;
+  /* width: 100px; */
+  /* height: 100px; */
+  /* border-radius: 50%; */
+  /* background: aqua; */
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  
+}
+
+.news-logo{
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: grey;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.heading-container {
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 15px;
+  margin-right: 15px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.heading-meta {
+  color : #242424;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.carousel-heading {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  color: #BB86FC;
+  font: 500;
+  font-size: 30px;
+}
