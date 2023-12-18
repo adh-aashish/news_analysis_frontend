@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import './carousel.css';
+import setopati from "../../assets/images/setopati.png"
 
 const Carousel = ({
   news,
@@ -39,6 +40,7 @@ const Carousel = ({
   // }, [handleNext]);
 
   return (
+    <>
     <div
       className={`carousel-wrapper ${effect}`}
       onKeyDown={handleKeyDown}
@@ -47,7 +49,6 @@ const Carousel = ({
       aria-roledescription='carousel'
     >
       <div className='carousel-items'>
-        <div className='carousel-heading'>Similar News</div>
         {news.map((el, index) => (
           <div
             key={index}
@@ -58,16 +59,16 @@ const Carousel = ({
                 : {}
             }
           >
-            <div className="news-container">
+            <div className="news_item-container">
               <div className='image-container'>
-                <img src={el.src} alt={el.alt} className="news-logo" />
+                <img src={setopati} alt={"image of media"} className="news-logo" />
               </div>
               <div className='heading-container'>
                 <div className='heading-meta'>
-                  <div>{el.date}</div>
-                  <div>{el.media}</div>
+                  <div>{el[1]}</div>
+                  <div>{el[3]}</div>
                 </div>
-                <div>{el.heading}</div>
+                <a href={el[2]}><div className='news-title'>{el[0]}</div></a>
               </div>
             </div>
           </div>
@@ -93,6 +94,7 @@ const Carousel = ({
         </>
       )}
 
+    </div>
       {showIndicators && (
         <div className='carousel-pagination'>
           {news.map((_, index) => (
@@ -107,7 +109,7 @@ const Carousel = ({
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

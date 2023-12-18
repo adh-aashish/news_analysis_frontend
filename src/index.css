@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
 code {
@@ -12,7 +13,7 @@ code {
     monospace;
 }
 
-#root, .App, .main,.LandingPage, body, html {
+#root, .App, .main, body, html {
   height: 100%;
 }
 
@@ -22,4 +23,9 @@ a, body {
 
 a {
   text-decoration: none;
+}
+
+* {
+  /* border: 1px solid violet; */
+  box-sizing: border-box;
 }

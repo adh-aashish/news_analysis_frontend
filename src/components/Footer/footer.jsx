@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="footer_container">
       <div>
         <div className="footer_menu">
-          <a href="./portals">Portals</a>
+          <a href="./portals">Data Analysis</a>
           <span>-</span>
           <a href="./contact">Contact Us</a>
           <span>-</span>
