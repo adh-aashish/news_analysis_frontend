@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer/footer";
 import InputForm from "../../components/InputForm/inputform";
 import Logo from "../../components/Logo/logo";
-// import ParticleBackground from "../../components/Particles/particles";
+import ParticleBackground from "../../components/Particles/particles";
 import "./landingpage.css"
 
 function LandingPage() {

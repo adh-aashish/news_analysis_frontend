@@ -2,51 +2,45 @@ import InputForm from "../../components/InputForm/inputform"
 import Logo from "../../components/Logo/logo"
 import Footer from "../../components/Footer/footer"
 import { MdSettings } from "react-icons/md"
-import Carousel from "../../components/Carousel/carousel"
 import "./datapage.css"
 import "../ResultPage/resultpage.css"
-import wordcloud from "../../assets/images/word_cloud.png"
-import piechart from "../../assets/images/pie-chart-example-1.png"
-import bargraph from "../../assets/images/matplotlib_bar_plot.jpg"
-import setopati from "../../assets/images/setopati.png"
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
 
-const DataPage = () => {
+function FetchWordCloud() {
+  const [wordclouds, setWordClouds] = useState([]);
 
-  const newsList= [
-    {
-      media : "setopati",
-      heading: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", 
-      link: "www.google.com",
-      date: "2080/11/12"
-    },
-    {
-      media : "setopati",
-      heading: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", 
-      link: "www.google.com",
-      date: "2080/11/12"
-    },
-    {
-      media : "setopati",
-      heading: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", 
-      link: "www.google.com",
-      date: "2080/11/12"
-    },
-    {
-      media : "setopati",
-      heading: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", 
-      link: "www.google.com",
-      date: "2080/11/12"
-    },
-    {
-      media : "setopati",
-      heading: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.", 
-      link: "www.google.com",
-      date: "2080/11/12"
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://127.0.0.1:8000/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      setWordClouds(result["word_clouds"]);
+    };
+    fetchData();
+  }, []);
+
+  return wordclouds;
+}
+
+const NewsPage = () => {
+  const navigate = useNavigate();
+  const handleClick = async (id) => {
+    console.log(id)
+    const data = {
+      id : id
+    }
+    navigate("/news", {state : data});
+  }
+
+  const wordclouds = FetchWordCloud();
 
   return (
-    <div className="DataPage">
+    <div className="NewsPage">
       <header className="heading">
         <div className="heading_items">
           <Logo />
@@ -55,24 +49,25 @@ const DataPage = () => {
         </div>
       </header>
       <section className="main_result">
-        <div className="news-container">
-          {
-            newsList.map((news, index)=>(
-              <div className="news-card">
-                <div className="image-container">
-                  <img src={setopati} alt="media image" className="media-logo" />
-                </div>
-                <div className="meta-info">
-                  <div>{news.date}</div>
-                  <div>{news.media}</div>
-                </div>
-                <div className="news-heading">
-                  <div className="">Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.</div>
-                </div>
-              </div>
-               
-            ))
-          }
+        <div className="topic-vis-container">
+          <div className="wordcloud-container" >
+            {
+              wordclouds.map((wordcloud, index) => (
+                <> 
+                  <div className="wordcloud" key={index}>
+                    <div>
+                      <div className="wordcloud-title">
+                        {"Topic "+ wordcloud[0] }
+                      </div>
+                      <button onClick={ ()=> handleClick(wordcloud[0]) }>
+                        <img src={"data:image/png;base64,"+ wordcloud[1]} alt="Word cloud of topic" width={515} height={268}  />
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ))
+            }
+          </div>
         </div>
       </section>
       <div className="footer-resultpage">
@@ -82,4 +77,4 @@ const DataPage = () => {
   )
 }
 
-export default DataPage;
+export default NewsPage;

@@ -9,7 +9,7 @@ const InputForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://192.168.1.7:9000/info", {
+    const response = await fetch("http://127.0.0.1:8000/info", {
       method: "POST",
       body: JSON.stringify({
         content: input.replace(/"/g, "").replace(/\n/g, " ").replace(/'/g, ""),
@@ -21,7 +21,7 @@ const InputForm = () => {
     const result = await response.json();
     // console.log(result["topic_word_clouds"]);
     const topic_word_clouds = result["topic_word_clouds"];
-    const topic_percent_bar = result["topic_percent_bar"];
+    const topic_percent_bar = result["topics_by_percentage"];
     const similar_news = result["similar_news"];
 
     const data = {

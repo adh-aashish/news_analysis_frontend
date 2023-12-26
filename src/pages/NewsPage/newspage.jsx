@@ -2,15 +2,38 @@ import InputForm from "../../components/InputForm/inputform"
 import Logo from "../../components/Logo/logo"
 import Footer from "../../components/Footer/footer"
 import { MdSettings } from "react-icons/md"
-// import Carousel from "../../components/Carousel/carousel"
+import { useLocation, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 import "./newspage.css"
 import "../ResultPage/resultpage.css"
+import setopati from "../../assets/images/setopati.png"
 
-const NewsPage = () => {
+function FetchNews(id) {
+  const [newsList, setNewsList] = useState([]);
 
-  const wordclouds = [1,2,3,4]
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://127.0.0.1:8000/topics/"+id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      setNewsList(result["top_news"]);
+    };
+    fetchData();
+  }, []);
+  console.log(newsList)
+  return newsList;
+}
+
+const DataPage = () => {
+  const location = useLocation();
+  const id = location.state.id;
+  const newsList = FetchNews(id);
   return (
-    <div className="NewsPage">
+    <div className="DataPage">
       <header className="heading">
         <div className="heading_items">
           <Logo />
@@ -19,7 +42,23 @@ const NewsPage = () => {
         </div>
       </header>
       <section className="main_result">
-        <div className="topic-vis-container">
+        <div className="news-container">
+          {
+            newsList.map((news, index)=>(
+              <div className="news-card" key={index}>
+                <div className="image-container">
+                  <img src={setopati} alt="media image" className="media-logo" />
+                </div>
+                <div className="meta-info">
+                  <div>{news.date}</div>
+                  <div>{news.source}</div>
+                </div>
+                <div className="news-heading">
+                  <a href={news.link}><div className="">{news.title}</div></a>
+                </div>
+              </div>
+            ))
+          }
         </div>
       </section>
       <div className="footer-resultpage">
@@ -29,4 +68,4 @@ const NewsPage = () => {
   )
 }
 
-export default NewsPage;
+export default DataPage;
