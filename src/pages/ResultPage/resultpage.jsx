@@ -30,7 +30,7 @@ const ResultPage = () => {
                   <div className="wordcloud" key={index}>
                     <div>
                       <div className="wordcloud-title">
-                        {"Topic "+ (index+1) }
+                        {"Topic id "+ wordcloud[2] }
                       </div>
                       <img src={"data:image/png;base64,"+ wordcloud[1]} alt="Word cloud of topic" width={515} height={268} />
                     </div>

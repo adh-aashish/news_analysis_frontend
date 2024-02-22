@@ -9,7 +9,7 @@ const InputForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/info", {
+    const response = await fetch("http://192.168.1.42:8000/info", {
       method: "POST",
       body: JSON.stringify({
         content: input.replace(/"/g, "").replace(/\n/g, " ").replace(/'/g, ""),
