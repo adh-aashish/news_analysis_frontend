@@ -27,11 +27,11 @@
   position: relative;
 }
 
-.main {
+.LandingPage .main {
   align-items: center;
   display: flex;
   justify-content: center;
-  min-height: 300px;
+  height: 100vh;
   padding: 0;
   position: relative;
 }

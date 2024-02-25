@@ -12,7 +12,7 @@ function FetchWordCloud() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://192.168.1.42:8000/", {
+      const response = await fetch("http://localhost:8000/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

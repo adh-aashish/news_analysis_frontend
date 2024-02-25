@@ -5,6 +5,7 @@ import App from './App';
 import ResultPage from "./pages/ResultPage/resultpage";
 import DataPage from "./pages/DataPage/datapage";
 import NewsPage from './pages/NewsPage/newspage';
+import AboutPage from './pages/AboutPage/aboutpage';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/news",
     element : <NewsPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
 ]);
 

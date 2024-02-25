@@ -13,7 +13,7 @@ function FetchNews(id) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://192.168.1.42:8000/topics/" + id, {
+      const response = await fetch("http://localhost:8000/topics/" + id, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
