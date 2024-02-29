@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom"
-import InputForm from "../../components/InputForm/inputform"
-import Logo from "../../components/Logo/logo"
-import Footer from "../../components/Footer/footer"
-import { MdSettings } from "react-icons/md"
-import Carousel from "../../components/Carousel/carousel"
-import "./resultpage.css"
+import { useLocation } from "react-router-dom";
+import Navbar from "../../components/Navbar/navbar";
+import Footer from "../../components/Footer/footer";
+import Carousel from "../../components/Carousel/carousel";
+import "./resultpage.css";
+import { GridImage } from "../../components/GridImage/imageGrid";
 
 const ResultPage = () => {
   const location = useLocation();
@@ -12,53 +11,42 @@ const ResultPage = () => {
   const bargraph = location.state.bargraph;
   const news = location.state.similar_news;
 
+  const imageGridList = [];
+
+  wordclouds.forEach(function (wordcloud) {
+    const new_image_data = {
+      title: "Topic ID: " + wordcloud[2],
+      image: wordcloud[1],
+      isClickable: true,
+      imageType: "wordcloud",
+    };
+    imageGridList.push(new_image_data);
+  });
+
+  imageGridList.push({
+    title: "Topic Percentage",
+    image: bargraph,
+    isClickable: false,
+    imageType: "bargraph",
+  });
+
   return (
     <div className="ResultPage">
-      <header className="heading">
-        <div className="heading_items">
-          <Logo />
-          <InputForm />
-          <MdSettings className="setting_logo" />
-        </div>
-      </header>
-      <section className="main_result">
-        <div className="topic-vis-container">
-          <div className="wordcloud-container" key={1}>
-            {
-              wordclouds.map((wordcloud, index) => (
-                <> 
-                  <div className="wordcloud" key={index}>
-                    <div>
-                      <div className="wordcloud-title">
-                        {"Topic id "+ wordcloud[2] }
-                      </div>
-                      <img src={"data:image/png;base64,"+ wordcloud[1]} alt="Word cloud of topic" width={515} height={268} />
-                    </div>
-                  </div>
-                </>
-              ))
-
-            }
-            <div className="wordcloud" key={3}>
-              <div>
-                <div className="wordcloud-title">
-                  Bargraph 
-                </div>
-                <img src={"data:image/png;base64,"+bargraph} alt="Word cloud of topic" width={515} height={268} />
-              </div>
-            </div>
-          </div>
-        </div>
+      <Navbar />
+      <section className="main-section">
+        <GridImage imageGridList={imageGridList} />
         <div className="news_container">
-          <div className='similar_news-heading'><span color="red">S</span>imilar <span color="red">N</span>ews</div>
+          <div className="similar_news-heading">
+            <span color="red">S</span>imilar <span color="red">N</span>ews
+          </div>
           <Carousel news={news}></Carousel>
         </div>
       </section>
       <div className="footer-resultpage">
-        <Footer/>
+        <Footer />
       </div>
-   </div>
-  )
-}
+    </div>
+  );
+};
 
-export default ResultPage 
+export default ResultPage;

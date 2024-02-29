@@ -1,0 +1,26 @@
+.heading {
+  background: #111;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  z-index: 17;
+  width: 100%;
+}
+
+.heading_items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  margin: 0 20px;
+}
+
+.input-form {
+  max-width: 500px;
+  height: 44px;
+}
+
+.setting_logo {
+  font-size: 50px;
+  padding: 0 11px;
+}

@@ -1,76 +1,44 @@
-import InputForm from "../../components/InputForm/inputform";
-import Logo from "../../components/Logo/logo";
+import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
-import { MdSettings } from "react-icons/md";
 import "./datapage.css";
-import "../ResultPage/resultpage.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { GridImage } from "../../components/GridImage/imageGrid";
+import { fetchGET } from "../../utils/fetch";
 
-function FetchWordCloud() {
-  const [wordclouds, setWordClouds] = useState([]);
+export const DataPage = () => {
+  const [imageGridList, setImageGridList] = useState([]);
+
+  const fetchData = async () => {
+    const wordcloudsResponse = await fetchGET("");
+    const wordclouds = wordcloudsResponse["word_clouds"];
+
+    const imgList = [];
+    for (let wordcloud of wordclouds) {
+      const new_image_data = {
+        title: "Topic ID: " + (wordcloud[0] + 1),
+        image: wordcloud[1],
+        isClickable: true,
+        imageType: "wordcloud",
+      };
+      imgList.push(new_image_data);
+    }
+    setImageGridList(imgList);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:8000/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await response.json();
-      setWordClouds(result["word_clouds"]);
-    };
     fetchData();
   }, []);
 
-  return wordclouds;
-}
-
-const NewsPage = () => {
-  const navigate = useNavigate();
-
-  const wordclouds = FetchWordCloud();
-
-  const handleClick = async (id) => {
-    const data = {
-      id: id,
-      wordcloud: wordclouds[id][1],
-    };
-    navigate("/news", { state: data });
-  };
   return (
-    <div className="NewsPage">
-      <header className="heading">
-        <div className="heading_items">
-          <Logo />
-          <InputForm />
-          <MdSettings className="setting_logo" />
-        </div>
-      </header>
-      <section className="main_result">
+    <div className="DataPage">
+      <Navbar />
+      <section className="main-section">
         <div className="topic-vis-container">
-          <div className="wordcloud-container">
-            {wordclouds.map((wordcloud, index) => (
-              <>
-                <div className="wordcloud" key={index}>
-                  <div>
-                    <div className="wordcloud-title">
-                      {"Topic " + (wordcloud[0] + 1)}
-                    </div>
-                    <button onClick={() => handleClick(wordcloud[0])}>
-                      <img
-                        src={"data:image/png;base64," + wordcloud[1]}
-                        alt="Word cloud of topic"
-                        width={515}
-                        height={268}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </>
-            ))}
-          </div>
+          {imageGridList.length ? (
+            <GridImage imageGridList={imageGridList} />
+          ) : (
+            "Loading Data"
+          )}
         </div>
       </section>
       <div className="footer-resultpage">
@@ -79,5 +47,3 @@ const NewsPage = () => {
     </div>
   );
 };
-
-export default NewsPage;

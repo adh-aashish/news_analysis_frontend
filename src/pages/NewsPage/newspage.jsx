@@ -1,65 +1,46 @@
-import InputForm from "../../components/InputForm/inputform";
-import Logo from "../../components/Logo/logo";
+import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
-import { MdSettings } from "react-icons/md";
-import { useLocation, useParams } from "react-router-dom";
+import { fetchGET } from "../../utils/fetch";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./newspage.css";
-import "../ResultPage/resultpage.css";
 import setopati from "../../assets/images/setopati.png";
+import { GridImage } from "../../components/GridImage/imageGrid";
 
-function FetchNews(id) {
-  const [newsList, setNewsList] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:8000/topics/" + id, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await response.json();
-      setNewsList(result["top_news"]);
-    };
-    fetchData();
-  }, []);
-  console.log(newsList);
-  return newsList;
-}
-
-const DataPage = () => {
+export const NewsPage = () => {
+  const [topNews, setTopNews] = useState([]);
   const location = useLocation();
   const id = location.state.id;
   const wordcloud = location.state.wordcloud;
-  const newsList = FetchNews(id);
+
+  const fetchData = async () => {
+    const newsListResponse = await fetchGET("topics/" + id);
+    setTopNews(newsListResponse["top_news"]);
+  };
+
+  const imageGridList = [];
+  imageGridList.push({
+    title: "Topic ID: " + (id + 1),
+    image: wordcloud,
+    isClickable: true,
+    imageType: "wordcloud",
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="DataPage">
-      <header className="heading">
-        <div className="heading_items">
-          <Logo />
-          <InputForm />
-          <MdSettings className="setting_logo" />
-        </div>
-      </header>
-      <section className="main_result">
-        <div className="wordcloud" key={3}>
-          <div>
-            <div className="wordcloud-title">Topic id : {id}</div>
-            <img
-              src={"data:image/png;base64," + wordcloud}
-              alt="Word cloud of topic"
-              width={515}
-              height={268}
-            />
-          </div>
-        </div>
+      <Navbar />
+      <section className="main-section">
+        <GridImage imageGridList={imageGridList} />
         <div className="news-heading-tmp">Top News</div>
         <div className="news-container">
-          {newsList.map((news, index) => (
+          {topNews.map((news, index) => (
             <div className="news-card" key={index}>
               <div className="image-container">
-                <img src={setopati} alt="media image" className="media-logo" />
+                <img src={setopati} alt="media" className="media-logo" />
               </div>
               <div className="meta-info">
                 <div>{news.date}</div>
@@ -80,5 +61,3 @@ const DataPage = () => {
     </div>
   );
 };
-
-export default DataPage;

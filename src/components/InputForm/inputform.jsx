@@ -19,7 +19,6 @@ const InputForm = () => {
       },
     });
     const result = await response.json();
-    // console.log(result["topic_word_clouds"]);
     const topic_word_clouds = result["topic_word_clouds"];
     const topic_percent_bar = result["topics_by_percentage"];
     const similar_news = result["similar_news"];

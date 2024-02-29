@@ -1,16 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import ResultPage from "./pages/ResultPage/resultpage";
-import DataPage from "./pages/DataPage/datapage";
-import NewsPage from './pages/NewsPage/newspage';
-import AboutPage from './pages/AboutPage/aboutpage';
-import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { DataPage } from "./pages/DataPage/datapage";
+import { NewsPage } from "./pages/NewsPage/newspage";
+import AboutPage from "./pages/AboutPage/aboutpage";
+import DataAnalysisPage from "./pages/DataAnalysisPage/dataAnalysisPage";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // import {BrowserRouter} from "react-router-dom";
 const router = createBrowserRouter([
@@ -24,11 +22,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/data",
-    element : <DataPage />,
+    element: <DataPage />,
+  },
+  {
+    path: "/dataAnalysis",
+    element: <DataAnalysisPage />,
   },
   {
     path: "/news",
-    element : <NewsPage />,
+    element: <NewsPage />,
   },
   {
     path: "/about",
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

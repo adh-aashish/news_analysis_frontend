@@ -1,31 +1,31 @@
 import Footer from "../../components/Footer/footer";
 import InputForm from "../../components/InputForm/inputform";
 import Logo from "../../components/Logo/logo";
-import ParticleBackground from "../../components/Particles/particles";
-import "./landingpage.css"
+import "./landingpage.css";
+// import ParticleBackground from "../../components/Particles/particles";
 
-function LandingPage() {
+const LandingPage = () => {
   return (
     <div className="LandingPage">
       <header className="heading">
-        <nav className="nav_container"> 
+        <nav className="nav_container">
           <div className="navbar">
             <Logo />
           </div>
         </nav>
       </header>
       <section className="main">
-        <div className='search'>
+        <div className="search">
           <InputForm />
         </div>
       </section>
-      <footer className="footer-landingpage"> 
+      <footer className="footer-landingpage">
         <Footer />
       </footer>
       {/*<ParticleBackground />*/}
       {/* <ParticleBackground />*/}
-   </div>
+    </div>
   );
-}
+};
 
-export default LandingPage 
+export default LandingPage;
