@@ -1,0 +1,8 @@
+.DataAnalysisPage {
+  height: 100%;
+  background: #242424;
+}
+
+.DataAnalysisPage .main {
+  min-height: 100vh;
+}

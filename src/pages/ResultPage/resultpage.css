@@ -8,14 +8,13 @@
 } */
 
 .main-section {
-  margin-top: 60px;
+  margin-top: 10px;
   width: 100%;
   height: max-content;
   min-height: 100vh;
 }
 
 .ResultPage,
-.DataPage,
 .NewsPage {
   background-color: #242424;
 }

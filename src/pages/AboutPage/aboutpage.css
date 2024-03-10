@@ -3,15 +3,6 @@
   background: #242424;
 }
 
-.main {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  min-height: 300px;
-  padding: 0;
-  position: relative;
-}
-
 .footer {
   width: 100%;
 }

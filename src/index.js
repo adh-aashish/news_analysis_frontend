@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import ResultPage from "./pages/ResultPage/resultpage";
-import { DataPage } from "./pages/DataPage/datapage";
 import { NewsPage } from "./pages/NewsPage/newspage";
 import AboutPage from "./pages/AboutPage/aboutpage";
 import DataAnalysisPage from "./pages/DataAnalysisPage/dataAnalysisPage";
@@ -19,10 +18,6 @@ const router = createBrowserRouter([
   {
     path: "/result",
     element: <ResultPage />,
-  },
-  {
-    path: "/data",
-    element: <DataPage />,
   },
   {
     path: "/dataAnalysis",

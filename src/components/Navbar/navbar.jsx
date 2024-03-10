@@ -4,6 +4,7 @@ import Logo from "../../components/Logo/logo";
 import { MdSettings } from "react-icons/md";
 
 const Navbar = () => {
+  console.log("rendered");
   return (
     <header className="heading">
       <div className="heading_items">

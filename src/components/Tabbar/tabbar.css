@@ -1,0 +1,16 @@
+.tabbar-container {
+  margin-top: 60px;
+}
+
+.tabbar-heading {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.tabbar-box {
+  padding: 20px;
+}
+
+.tabbar-box.active {
+  border-bottom: 1px red solid;
+}
