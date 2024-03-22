@@ -15,7 +15,7 @@ const ResultPage = () => {
 
   wordclouds.forEach(function (wordcloud) {
     const new_image_data = {
-      title: "Topic ID: " + wordcloud[2],
+      title: "Topic ID: " + wordcloud[3],
       image: wordcloud[1],
       isClickable: true,
       imageType: "wordcloud",
