@@ -10,17 +10,17 @@ const ResultPage = () => {
   const location = useLocation();
   const wordclouds = location.state.wordclouds;
   const bargraph = location.state.bargraph;
-  const similar_news = location.state.similar_news;
-  var news = [];
-  for (let i = 0; i < news.length; i++) {
-    news.push({});
-  }
+  const news = location.state.similar_news;
+  // var news = [];
+  // for (let i = 0; i < news.length; i++) {
+  //   news.push({});
+  // }
 
   const imageGridList = [];
 
   wordclouds.forEach(function (wordcloud) {
     const new_image_data = {
-      title: "Topic ID: " + wordcloud[3],
+      title: "Topic ID: " + wordcloud[2],
       image: wordcloud[1],
       isClickable: true,
       imageType: "wordcloud",

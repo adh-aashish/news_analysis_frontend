@@ -4,3 +4,7 @@
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 40px; /* Optional spacing between items  */
 }
+
+.RelatedNews {
+  height: max-content;
+}

@@ -12,8 +12,8 @@
   min-height: 100vh;
 }
 
-.ResultPage,
-.NewsPage {
+.ResultPage {
+  height: 100%;
   background-color: #242424;
 }
 
@@ -40,11 +40,11 @@
   padding-bottom: 10px;
 }
 
-.news_container {
+/* .news_container {
   height: 300px;
   position: relative;
   margin-top: 50px;
-}
+} */
 
 .footer-resultpage .footer_container {
   width: 100%;
