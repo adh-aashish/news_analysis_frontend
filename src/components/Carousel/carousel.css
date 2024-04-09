@@ -94,7 +94,7 @@
   opacity: 1;
 }
 
-.news_item-container {
+/* .news_item-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -145,4 +145,4 @@
 .news-title:hover {
   color: blue;
   font-size: 22px;
-}
+} */

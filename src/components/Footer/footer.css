@@ -1,6 +1,11 @@
-.footer-landingpage .footer_container {
+.footer_container {
   width: 100%;
   display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.footer-landingpage .footer_container {
   flex-flow: wrap;
   align-items: center;
   justify-content: center;
@@ -19,7 +24,7 @@
   margin-bottom: 5px;
 }
 
-.footer_menu a{
+.footer_menu a {
   color: #888;
   text-decoration: underline;
 }
@@ -37,4 +42,5 @@
 
 .analysis {
   margin-top: 15px;
-} 
+  text-align: center;
+}

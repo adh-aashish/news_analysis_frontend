@@ -3,11 +3,13 @@ import Footer from "../../components/Footer/footer";
 import { fetchGET } from "../../utils/fetch";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./newspage.css";
-import setopati from "../../assets/images/setopati.png";
+import "./topicAnalysisPage.css";
 import { GridImage } from "../../components/GridImage/imageGrid";
+import { Tabbar } from "../../components/Tabbar/tabbar";
+import { Trend } from "./sections/Trend/trend";
+import { RelatedNews } from "./sections/RelatedNews/relatedNews";
 
-export const NewsPage = () => {
+export const TopicAnalysisPage = () => {
   const [topNews, setTopNews] = useState([]);
   const location = useLocation();
   const id = location.state.id;
@@ -30,30 +32,21 @@ export const NewsPage = () => {
     fetchData();
   }, []);
 
+  const topicMap = {
+    news: <RelatedNews newsList={topNews} />,
+    trend: <Trend />,
+  };
+
   return (
-    <div className="DataPage">
+    <div className="TopicAnalysisPage">
       <Navbar />
-      <section className="main-section">
-        <GridImage imageGridList={imageGridList} />
-        <div className="news-heading-tmp">Top News</div>
-        <div className="news-container">
-          {topNews.map((news, index) => (
-            <div className="news-card" key={index}>
-              <div className="image-container">
-                <img src={setopati} alt="media" className="media-logo" />
-              </div>
-              <div className="meta-info">
-                <div>{news.date}</div>
-                <div>{news.source}</div>
-              </div>
-              <div className="news-heading">
-                <a href={news.link}>
-                  <div className="">{news.title}</div>
-                </a>
-              </div>
-            </div>
-          ))}
+      <section className="main">
+        <div className="topic-cloud">
+          <GridImage imageGridList={imageGridList} />
         </div>
+        <Tabbar topicMap={topicMap} />
+        {/* <div className="news-heading-tmp">Top News</div>
+         */}
       </section>
       <div className="footer-resultpage">
         <Footer />

@@ -4,12 +4,17 @@ import Footer from "../../components/Footer/footer";
 import Carousel from "../../components/Carousel/carousel";
 import "./resultpage.css";
 import { GridImage } from "../../components/GridImage/imageGrid";
+import { RelatedNews } from "../TopicAnalysisPage/sections/RelatedNews/relatedNews";
 
 const ResultPage = () => {
   const location = useLocation();
   const wordclouds = location.state.wordclouds;
   const bargraph = location.state.bargraph;
-  const news = location.state.similar_news;
+  const similar_news = location.state.similar_news;
+  var news = [];
+  for (let i = 0; i < news.length; i++) {
+    news.push({});
+  }
 
   const imageGridList = [];
 
@@ -33,13 +38,14 @@ const ResultPage = () => {
   return (
     <div className="ResultPage">
       <Navbar />
-      <section className="main-section">
+      <section className="main">
         <GridImage imageGridList={imageGridList} />
         <div className="news_container">
           <div className="similar_news-heading">
             <span color="red">S</span>imilar <span color="red">N</span>ews
           </div>
-          <Carousel news={news}></Carousel>
+          {/* <Carousel news={news}></Carousel> */}
+          <RelatedNews newsList={news} />
         </div>
       </section>
       <div className="footer-resultpage">

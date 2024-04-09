@@ -1,0 +1,13 @@
+.TopicAnalysisPage {
+  height: 100%;
+  background: #242424;
+}
+
+.TopicAnalysisPage .main {
+  min-height: 100vh;
+  margin-top: 60px;
+}
+
+.TopicAnalysisPage .topic-cloud {
+  padding-top: 10px;
+}

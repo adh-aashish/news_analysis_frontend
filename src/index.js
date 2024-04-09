@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { TopicAnalysisPage } from "./pages/TopicAnalysisPage/topicAnalysisPage";
 import ResultPage from "./pages/ResultPage/resultpage";
-import { NewsPage } from "./pages/NewsPage/newspage";
 import AboutPage from "./pages/AboutPage/aboutpage";
 import DataAnalysisPage from "./pages/DataAnalysisPage/dataAnalysisPage";
 import reportWebVitals from "./reportWebVitals";
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     element: <DataAnalysisPage />,
   },
   {
-    path: "/news",
-    element: <NewsPage />,
+    path: "/topicAnalysis",
+    element: <TopicAnalysisPage />,
   },
   {
     path: "/about",

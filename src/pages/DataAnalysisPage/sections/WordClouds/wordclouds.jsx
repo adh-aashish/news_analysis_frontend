@@ -1,9 +1,7 @@
-import Navbar from "../../components/Navbar/navbar";
-import Footer from "../../components/Footer/footer";
 import "./wordclouds.css";
 import React, { useState, useEffect } from "react";
-import { GridImage } from "../../components/GridImage/imageGrid";
-import { fetchGET } from "../../utils/fetch";
+import { GridImage } from "../../../../components/GridImage/imageGrid";
+import { fetchGET } from "../../../../utils/fetch";
 
 export const WordClouds = () => {
   const [imageGridList, setImageGridList] = useState([]);
@@ -31,7 +29,6 @@ export const WordClouds = () => {
 
   return (
     <div className="WordClouds">
-      <Navbar />
       <section className="main-section">
         <div className="topic-vis-container">
           {imageGridList.length ? (
@@ -41,9 +38,6 @@ export const WordClouds = () => {
           )}
         </div>
       </section>
-      <div className="footer-resultpage">
-        <Footer />
-      </div>
     </div>
   );
 };

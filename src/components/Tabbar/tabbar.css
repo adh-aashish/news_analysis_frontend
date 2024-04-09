@@ -14,3 +14,11 @@
 .tabbar-box.active {
   border-bottom: 1px red solid;
 }
+
+/* this is used when displaying the result of the tabbar */
+.tabbar-result-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}

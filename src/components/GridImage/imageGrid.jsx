@@ -10,7 +10,7 @@ export const GridImage = (props) => {
       id: id,
       wordcloud: imageGridList[id]["image"],
     };
-    navigate("/news", { state: data });
+    navigate("/topicAnalysis", { state: data });
   };
 
   return (
