@@ -1,16 +1,16 @@
 import "./navbar.css";
 import InputForm from "../../components/InputForm/inputform";
 import Logo from "../../components/Logo/logo";
-import { MdSettings } from "react-icons/md";
+import Hamburger from "../Hamburger/hamburger";
 
 const Navbar = () => {
-  console.log("rendered");
   return (
     <header className="heading">
       <div className="heading_items">
         <Logo />
         <InputForm />
-        <MdSettings className="setting_logo" />
+        {/* <MdSettings className="setting_logo" /> */}
+        <Hamburger />
       </div>
     </header>
   );

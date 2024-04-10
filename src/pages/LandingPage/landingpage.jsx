@@ -23,7 +23,7 @@ const LandingPage = () => {
         <Footer />
       </footer>
       {/*<ParticleBackground />*/}
-      {/* <ParticleBackground />*/}
+      {/* <ParticleBackground /> */}
     </div>
   );
 };

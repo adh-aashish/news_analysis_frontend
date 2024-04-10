@@ -9,6 +9,7 @@
 }
 .tabbar-box {
   padding: 20px;
+  cursor: pointer;
 }
 
 .tabbar-box.active {

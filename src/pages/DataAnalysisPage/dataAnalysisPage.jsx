@@ -10,11 +10,11 @@ import { InterTopicDist } from "./sections/InterTopicDist/intertopicdist";
 
 const DataAnalysisPage = () => {
   const topicMap = {
-    wordcloud: <WordClouds />,
-    cluster: <Cluster />,
-    trend: <Trend />,
-    barchartRace: <BarChartRace />,
-    intertopicdist: <InterTopicDist />,
+    Wordcloud: <WordClouds />,
+    Cluster: <Cluster />,
+    // Trend: <Trend />,
+    BarchartRace: <BarChartRace />,
+    Intertopicdist: <InterTopicDist />,
   };
 
   return (

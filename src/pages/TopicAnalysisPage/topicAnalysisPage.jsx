@@ -11,13 +11,27 @@ import { RelatedNews } from "./sections/RelatedNews/relatedNews";
 
 export const TopicAnalysisPage = () => {
   const [topNews, setTopNews] = useState([]);
+  const [trendFig, setTrendFig] = useState("");
+  const [sortByDate, setSortByDate] = useState(false);
   const location = useLocation();
   const id = location.state.id;
   const wordcloud = location.state.wordcloud;
 
   const fetchData = async () => {
-    const newsListResponse = await fetchGET("topics/" + id);
+    let url = "";
+    if (sortByDate) {
+      url = "date";
+    } else {
+      url = "score";
+    }
+    const newsListResponse = await fetchGET("topics/" + id + "?sort=" + url);
     setTopNews(newsListResponse["top_news"]);
+    setTrendFig(newsListResponse["topic_trend"]);
+    console.log("trend fig", trendFig);
+  };
+
+  const handleFilterChange = () => {
+    setSortByDate(!sortByDate);
   };
 
   const imageGridList = [];
@@ -30,11 +44,13 @@ export const TopicAnalysisPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [sortByDate]);
 
   const topicMap = {
-    news: <RelatedNews newsList={topNews} />,
-    trend: <Trend />,
+    news: (
+      <RelatedNews newsList={topNews} handleFilterChange={handleFilterChange} />
+    ),
+    trend: <Trend figure={trendFig} />,
   };
 
   return (

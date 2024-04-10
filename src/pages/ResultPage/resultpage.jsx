@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
-import Carousel from "../../components/Carousel/carousel";
+// import Carousel from "../../components/Carousel/carousel";
 import "./resultpage.css";
 import { GridImage } from "../../components/GridImage/imageGrid";
 import { RelatedNews } from "../TopicAnalysisPage/sections/RelatedNews/relatedNews";

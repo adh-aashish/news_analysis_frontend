@@ -1,0 +1,38 @@
+.burger-menu {
+  height: 100%;
+  width: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu {
+  width: 25%;
+  height: 100vh;
+  background-color: black;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.menu a {
+  margin-top: 20px;
+}
+
+.menu a:hover {
+  color: red;
+}
+/* ------------- sliding menu ------------------ */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inherit;
+}

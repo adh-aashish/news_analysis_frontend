@@ -16,7 +16,9 @@ const NewsCard = ({ news }) => {
         <div className="heading-content">
           <div className="heading-meta">
             <div>{news.date}</div>
-            <div className="heading-score">Score : {news.score}</div>
+            <div className="heading-score">
+              Similarity : {(news.score * 100).toFixed(2)} %
+            </div>
           </div>
           <a href={news.link}>
             <div className="news-title">{news.title}</div>

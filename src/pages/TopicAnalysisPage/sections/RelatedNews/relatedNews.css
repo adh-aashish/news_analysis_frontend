@@ -8,3 +8,19 @@
 .RelatedNews {
   height: max-content;
 }
+
+.Dropdown-control {
+  background-color: black !important;
+  color: white !important;
+}
+.dropdown-container {
+  display: flex;
+  padding-top: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Sort-text {
+  font: bold;
+  margin-right: 25px;
+}
