@@ -2,7 +2,7 @@ import Footer from "../../components/Footer/footer";
 import InputForm from "../../components/InputForm/inputform";
 import Logo from "../../components/Logo/logo";
 import "./landingpage.css";
-// import ParticleBackground from "../../components/Particles/particles";
+import ParticleBackground from "../../components/Particles/particles";
 
 const LandingPage = () => {
   return (
@@ -23,7 +23,7 @@ const LandingPage = () => {
         <Footer />
       </footer>
       {/*<ParticleBackground />*/}
-      {/* <ParticleBackground /> */}
+      <ParticleBackground />
     </div>
   );
 };

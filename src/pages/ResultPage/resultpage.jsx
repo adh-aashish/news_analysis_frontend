@@ -5,35 +5,70 @@ import Footer from "../../components/Footer/footer";
 import "./resultpage.css";
 import { GridImage } from "../../components/GridImage/imageGrid";
 import { RelatedNews } from "../TopicAnalysisPage/sections/RelatedNews/relatedNews";
+import { useEffect, useState } from "react";
+import { fetchPOST } from "../../utils/fetch";
 
 const ResultPage = () => {
   const location = useLocation();
-  const wordclouds = location.state.wordclouds;
-  const bargraph = location.state.bargraph;
-  const news = location.state.similar_news;
+  const [imageGridList, setImageGridList] = useState([]);
+  const [news, setNews] = useState([]);
+  const [sortByDate, setSortByDate] = useState(false);
+
+  const body = location.state.body;
+  console.log(body);
   // var news = [];
   // for (let i = 0; i < news.length; i++) {
   //   news.push({});
   // }
+  const fetchData = async () => {
+    let url = "";
+    if (sortByDate) {
+      url = "date";
+    } else {
+      url = "score";
+    }
+    console.log(sortByDate);
+    try {
+      const result = await fetchPOST("info/?sort=" + url, body);
 
-  const imageGridList = [];
+      // console.log(result);
+      const wordclouds = result["topic_word_clouds"];
+      const bargraph = result["topics_by_percentage"];
+      // setWordClouds(result["topic_word_clouds"]);
 
-  wordclouds.forEach(function (wordcloud) {
-    const new_image_data = {
-      title: "Topic ID: " + wordcloud[2],
-      image: wordcloud[1],
-      isClickable: true,
-      imageType: "wordcloud",
-    };
-    imageGridList.push(new_image_data);
-  });
+      const imageList = [];
 
-  imageGridList.push({
-    title: "Topic Percentage",
-    image: bargraph,
-    isClickable: false,
-    imageType: "bargraph",
-  });
+      wordclouds.forEach(function (wordcloud) {
+        const new_image_data = {
+          title: "Topic ID: " + wordcloud[2],
+          image: wordcloud[1],
+          isClickable: true,
+          imageType: "wordcloud",
+        };
+        imageList.push(new_image_data);
+      });
+
+      imageList.push({
+        title: "Topic Percentage",
+        image: bargraph,
+        isClickable: false,
+        imageType: "bargraph",
+      });
+
+      setImageGridList(imageList);
+      setNews(result["similar_news"]);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [sortByDate]);
+
+  const handleFilterChange = () => {
+    setSortByDate(!sortByDate);
+  };
 
   return (
     <div className="ResultPage">
@@ -45,7 +80,10 @@ const ResultPage = () => {
             <span color="red">S</span>imilar <span color="red">N</span>ews
           </div>
           {/* <Carousel news={news}></Carousel> */}
-          <RelatedNews newsList={news} />
+          <RelatedNews
+            newsList={news}
+            handleFilterChange={handleFilterChange}
+          />
         </div>
       </section>
       <div className="footer-resultpage">
