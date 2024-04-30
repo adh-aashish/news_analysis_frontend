@@ -20,51 +20,51 @@ const ResultPage = () => {
   // for (let i = 0; i < news.length; i++) {
   //   news.push({});
   // }
-  const fetchData = async () => {
-    let url = "";
-    if (sortByDate) {
-      url = "date";
-    } else {
-      url = "score";
-    }
-    console.log(sortByDate);
-    try {
-      const result = await fetchPOST("info/?sort=" + url, body);
-
-      // console.log(result);
-      const wordclouds = result["topic_word_clouds"];
-      const bargraph = result["topics_by_percentage"];
-      // setWordClouds(result["topic_word_clouds"]);
-
-      const imageList = [];
-
-      wordclouds.forEach(function (wordcloud) {
-        const new_image_data = {
-          title: "Topic ID: " + wordcloud[2],
-          image: wordcloud[1],
-          isClickable: true,
-          imageType: "wordcloud",
-        };
-        imageList.push(new_image_data);
-      });
-
-      imageList.push({
-        title: "Topic Percentage",
-        image: bargraph,
-        isClickable: false,
-        imageType: "bargraph",
-      });
-
-      setImageGridList(imageList);
-      setNews(result["similar_news"]);
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      let url = "";
+      if (sortByDate) {
+        url = "date";
+      } else {
+        url = "score";
+      }
+      console.log(sortByDate);
+      try {
+        const result = await fetchPOST("info/?sort=" + url, body);
+
+        // console.log(result);
+        const wordclouds = result["topic_word_clouds"];
+        const bargraph = result["topics_by_percentage"];
+        // setWordClouds(result["topic_word_clouds"]);
+
+        const imageList = [];
+
+        wordclouds.forEach(function (wordcloud) {
+          const new_image_data = {
+            title: "Topic ID: " + wordcloud[2],
+            image: wordcloud[1],
+            isClickable: true,
+            imageType: "wordcloud",
+          };
+          imageList.push(new_image_data);
+        });
+
+        imageList.push({
+          title: "Topic Percentage",
+          image: bargraph,
+          isClickable: false,
+          imageType: "bargraph",
+        });
+
+        setImageGridList(imageList);
+        setNews(result["similar_news"]);
+      } catch (e) {
+        console.log(e);
+      }
+    };
     fetchData();
-  }, [sortByDate]);
+  }, [sortByDate, body]);
 
   const handleFilterChange = () => {
     setSortByDate(!sortByDate);

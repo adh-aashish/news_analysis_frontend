@@ -17,19 +17,6 @@ export const TopicAnalysisPage = () => {
   const id = location.state.id;
   const wordcloud = location.state.wordcloud;
 
-  const fetchData = async () => {
-    let url = "";
-    if (sortByDate) {
-      url = "date";
-    } else {
-      url = "score";
-    }
-    const newsListResponse = await fetchGET("topics/" + id + "?sort=" + url);
-    setTopNews(newsListResponse["top_news"]);
-    setTrendFig(newsListResponse["topic_trend"]);
-    console.log("trend fig", trendFig);
-  };
-
   const handleFilterChange = () => {
     setSortByDate(!sortByDate);
   };
@@ -43,8 +30,20 @@ export const TopicAnalysisPage = () => {
   });
 
   useEffect(() => {
+    const fetchData = async () => {
+      let url = "";
+      if (sortByDate) {
+        url = "date";
+      } else {
+        url = "score";
+      }
+      const newsListResponse = await fetchGET("topics/" + id + "?sort=" + url);
+      setTopNews(newsListResponse["top_news"]);
+      setTrendFig(newsListResponse["topic_trend"]);
+      // console.log("trend fig", trendFig);
+    };
     fetchData();
-  }, [sortByDate]);
+  }, [sortByDate, id]);
 
   const topicMap = {
     news: (

@@ -4,7 +4,7 @@ import { Tabbar } from "../../components/Tabbar/tabbar";
 import "./dataAnalysisPage.css";
 import { WordClouds } from "./sections/WordClouds/wordclouds";
 import { Cluster } from "./sections/Cluster/cluster";
-import { Trend } from "./sections/Trend/trend";
+// import { Trend } from "./sections/Trend/trend";
 import { BarChartRace } from "./sections/BarchartRace/barchartRace";
 import { InterTopicDist } from "./sections/InterTopicDist/intertopicdist";
 
